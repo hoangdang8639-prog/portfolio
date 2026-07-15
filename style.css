@@ -126,6 +126,38 @@ h1, h2, h3, h4 {
 }
 
 /* Header Utilities */
+.profile-meta-wrapper {
+  display: flex;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.profile-avatar-container {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  border: 3.5px solid var(--bg-secondary);
+  box-shadow: var(--shadow-md), 0 0 0 1px var(--border-color);
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.profile-avatar-container:hover {
+  transform: scale(1.05);
+  border-color: var(--primary-accent);
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .cv-header {
   padding: 3rem 2.5rem;
   background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
@@ -866,6 +898,12 @@ dialog.project-modal::backdrop {
 @media (max-width: 768px) {
   body {
     padding: 1rem 0.5rem;
+  }
+  
+  .profile-meta-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
   }
   
   .cv-header {
