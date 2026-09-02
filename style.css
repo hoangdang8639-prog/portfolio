@@ -584,6 +584,293 @@ h1, h2, h3, h4 {
   pointer-events: none;
 }
 
+/* ==========================================================================
+   PROJECT GROUPS & ACCORDION
+   ========================================================================== */
+.project-group {
+  margin-bottom: 2rem;
+  background-color: transparent;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-normal);
+}
+
+.group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.15rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  user-select: none;
+  transition: all var(--transition-fast);
+  margin-bottom: 1rem;
+}
+
+.group-header:hover {
+  border-color: var(--primary-accent);
+  background-color: var(--bg-tertiary);
+  transform: translateY(-1px);
+}
+
+.group-title-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.group-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  background-color: rgba(37, 99, 235, 0.12);
+  color: var(--primary);
+}
+
+[data-theme="dark"] .group-badge {
+  background-color: rgba(96, 165, 250, 0.18);
+  color: #93c5fd;
+}
+
+.group-badge-secondary {
+  background-color: rgba(16, 185, 129, 0.12);
+  color: #059669;
+}
+
+[data-theme="dark"] .group-badge-secondary {
+  background-color: rgba(52, 211, 153, 0.18);
+  color: #6ee7b7;
+}
+
+.group-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.group-count {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.group-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+  border-radius: 50%;
+  transition: all var(--transition-normal);
+}
+
+.group-toggle-btn:hover {
+  color: var(--primary);
+  background-color: var(--bg-primary);
+}
+
+.chevron-icon {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(180deg);
+}
+
+.group-toggle-btn.collapsed .chevron-icon {
+  transform: rotate(0deg);
+}
+
+/* Collapsible Content */
+.group-content {
+  display: none;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.group-content.open {
+  display: block;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   PROOF OF WORK CARD (BẰNG CHỨNG THỰC CHIẾN)
+   ========================================================================== */
+.proof-card {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.04) 0%, rgba(37, 99, 235, 0.01) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.35rem;
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .proof-card {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(30, 41, 59, 0.4) 100%);
+  border-color: rgba(96, 165, 250, 0.25);
+  border-left: 4px solid #60a5fa;
+}
+
+#group-solo .proof-card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.04) 0%, rgba(16, 185, 129, 0.01) 100%);
+  border-color: rgba(16, 185, 129, 0.18);
+  border-left: 4px solid #10b981;
+}
+
+[data-theme="dark"] #group-solo .proof-card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(30, 41, 59, 0.4) 100%);
+  border-color: rgba(52, 211, 153, 0.25);
+  border-left: 4px solid #34d399;
+}
+
+.proof-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.proof-header svg {
+  width: 18px;
+  height: 18px;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+#group-solo .proof-header svg {
+  color: #10b981;
+}
+
+[data-theme="dark"] #group-solo .proof-header svg {
+  color: #34d399;
+}
+
+.proof-header h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.proof-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.proof-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.proof-list li strong {
+  color: var(--text-main);
+}
+
+.proof-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+#group-solo .proof-list li::before {
+  color: #10b981;
+}
+
+/* ==========================================================================
+   GROUP NOTE & COMPACT PROJECT LIST (GROUP 2)
+   ========================================================================== */
+.group-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid #10b981;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="dark"] .group-note {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(52, 211, 153, 0.2);
+  border-left: 3px solid #34d399;
+}
+
+.compact-project-list {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1.15rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.compact-project-list li {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.compact-project-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #10b981;
+  font-weight: bold;
+}
+
+[data-theme="dark"] .compact-project-list li::before {
+  color: #34d399;
+}
+
+.compact-project-list a {
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.compact-project-list a:hover {
+  color: var(--primary-accent);
+  text-decoration: underline;
+}
+
+[data-theme="dark"] .compact-project-list a {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .compact-project-list a:hover {
+  color: #93c5fd;
+}
+
 /* Products Grid */
 .products-grid {
   display: grid;
@@ -669,13 +956,24 @@ h1, h2, h3, h4 {
   margin-bottom: 0.5rem;
 }
 
+.product-icon-link {
+  display: block;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  transition: transform var(--transition-fast);
+}
+
+.product-icon-link:hover {
+  transform: scale(1.05);
+}
+
 .product-icon {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
   object-fit: cover;
-  flex-shrink: 0;
+  display: block;
 }
 
 .product-card-title-group {
@@ -683,10 +981,19 @@ h1, h2, h3, h4 {
   flex-direction: column;
 }
 
+.product-title-link {
+  text-decoration: none;
+}
+
 .product-title {
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-main);
+  transition: color var(--transition-fast);
+}
+
+.product-title-link:hover .product-title {
+  color: var(--primary);
 }
 
 .product-desc {
@@ -697,41 +1004,16 @@ h1, h2, h3, h4 {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.product-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-  margin: 0.5rem 0;
-}
-
-.product-tag {
-  background-color: var(--bg-tertiary);
-  color: var(--text-medium);
-  font-size: 0.75rem;
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
+  margin-bottom: 0.75rem;
 }
 
 .product-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-top: auto;
   border-top: 1px solid var(--border-color);
   padding-top: 0.75rem;
-}
-
-.product-role {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text-muted);
-}
-
-.product-role span {
-  font-weight: 600;
-  color: var(--primary-accent);
 }
 
 .product-actions {
@@ -739,146 +1021,34 @@ h1, h2, h3, h4 {
   gap: 0.5rem;
 }
 
-.btn-card-action {
-  background: none;
-  border: 1px solid var(--border-color);
-  color: var(--text-main);
-  padding: 0.4rem;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  display: flex;
+.btn-card-store {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary);
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
   transition: all var(--transition-fast);
 }
 
-.btn-card-action:hover {
-  background-color: var(--bg-tertiary);
-  color: var(--primary-accent);
-  border-color: var(--primary-accent);
-}
-
-.btn-card-action svg {
-  width: 16px;
-  height: 16px;
-}
-
-/* ==========================================================================
-   INTERACTIVE DIALOG (PROJECT DETAIL MODAL)
-   ========================================================================== */
-dialog.project-modal {
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  background-color: var(--bg-secondary);
-  color: var(--text-main);
-  max-width: 550px;
-  width: 90%;
-  margin: auto;
-  padding: 2.5rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  outline: none;
-  transition: opacity var(--transition-normal);
-}
-
-dialog.project-modal::backdrop {
-  background-color: rgba(15, 23, 42, 0.4);
-  backdrop-filter: blur(4px);
-  transition: backdrop-filter var(--transition-normal);
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-}
-
-.modal-title-group h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.25rem;
-}
-
-.modal-close-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-muted);
-  border-radius: 50%;
-  padding: 0.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color var(--transition-fast), color var(--transition-fast);
-}
-
-.modal-close-btn:hover {
-  background-color: var(--bg-tertiary);
-  color: var(--text-main);
-}
-
-.modal-close-btn svg {
-  width: 24px;
-  height: 24px;
-}
-
-.modal-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-.modal-metadata {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  background-color: var(--bg-tertiary);
-  padding: 1rem;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-color);
-}
-
-.meta-box h4 {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
-}
-
-.meta-box p {
-  font-weight: 600;
-  color: var(--text-main);
-}
-
-.modal-links {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.btn-primary {
+.btn-card-store:hover {
   background-color: var(--primary);
   color: #ffffff;
-  border: none;
-  font-family: var(--font-body);
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: background-color var(--transition-fast);
+  border-color: var(--primary);
 }
 
-.btn-primary:hover {
-  background-color: var(--primary-hover);
+[data-theme="dark"] .btn-card-store:hover {
+  color: var(--bg-primary);
 }
 
-[data-theme="dark"] .btn-primary {
-  color: var(--bg-secondary);
+.btn-card-store svg {
+  width: 13px;
+  height: 13px;
 }
 
 /* ==========================================================================
@@ -983,11 +1153,68 @@ dialog.project-modal::backdrop {
   .controls-group,
   .filter-tabs,
   .portfolio-search,
-  .btn-card-action,
-  dialog.project-modal {
+  .group-toggle-btn,
+  .btn-card-store {
     display: none !important;
   }
   
+  /* Project Groups & Proof of Work in Print */
+  .project-group {
+    margin-bottom: 1.5rem !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .group-header {
+    border: 1px solid #cbd5e1 !important;
+    background: #f8fafc !important;
+    padding: 0.5rem 0.75rem !important;
+    cursor: default !important;
+  }
+
+  .group-content {
+    display: block !important;
+    opacity: 1 !important;
+  }
+
+  .proof-card {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    border-left: 3px solid #1e3a8a !important;
+    padding: 0.75rem 1rem !important;
+    margin-bottom: 0.75rem !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  #group-solo .proof-card {
+    border-left: 3px solid #059669 !important;
+  }
+
+  .group-note {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    border-left: 3px solid #059669 !important;
+    padding: 0.5rem 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .compact-project-list {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 0.6rem 0.9rem !important;
+    margin-top: 0.75rem !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .compact-project-list a {
+    color: #1e3a8a !important;
+    text-decoration: underline !important;
+  }
+
   /* Restructure Grid for A4 layout printing */
   .cv-grid {
     grid-template-columns: 280px 1fr !important;
@@ -1052,6 +1279,8 @@ dialog.project-modal::backdrop {
   .timeline-item, 
   .skills-block, 
   .product-card,
+  .proof-card,
+  .project-group,
   section {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
